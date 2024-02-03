@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block aboutus %}
+<div class="container mx-auto p-8">
+    <div>
+        <h1 class="text-4xl">VIETNAM STEAM UNION!</h1>
+    </div>
+    <!-- Achievements section -->
+    {% if achievements %}
+    <div class="flex flex-col lg:flex-row justify-center items-center gap-16 p-4 mt-4 text-white">
+        {% for achievement in achievements %}
+        <div class="p-4 rounded-xl bg-[#010A82]">
+            <h2 class="text-center">{{ achievement.achieve}}</h2>
+            <p class="text-justify">{{ achievement.achieveDesc}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!--Intro section-->
+    {% if about %}
+    <div class="flex flex-col lg:flex-row mt-10">
+        <div class="w-full lg:w-1/2">{{ about.Intro | safe}}</div>
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60" class="block lg:block rounded-md w-full lg:w-5/12 mx-auto" />
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

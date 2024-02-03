@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block homepage %}
+<!-- Hero section -->
+<div class="h-[300px] md:h-[750px] bg-cover bg-center relative flex items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/assets/vsu_hero.png')">
+    <div class="text-center text-white w-full px-4">
+        <h1 class="text-5xl">Viet Nam STEAM Union</h1>
+        <p>Tổ chức của học sinh, do học sinh và vì học sinh: ... cuộc thi lớn, hàng chục sự kiện, hàng trăm bạn học sinh được truyền cảm hứng!</p>
+    </div>
+</div>
+
+<!-- Intro section -->
+<div class="h-[60vh] container mx-auto flex flex-col md:flex-row items-center md:gap-16">
+    <div class="flex flex-col basis-1/2 mt-10 md:mt-0 items-center gap-5 md:w-full">
+        <h1 class="text-xl lg:text-3xl">Viet Nam STEAM Union?</h1>
+        <p class="text-justify text-md lg:text-lg mx-4">Cộng đồng Vietnam STEAM Union (VSU) là liên minh các câu lạc bộ STEAM, đội tuyển Robotics của các bạn học sinh tại Vietnam, được bảo trợ bởi MakerViet. VSU tập trung xây dựng các hoạt động, dự án nhằm kết nối các bạn học sinh Việt Nam.</p>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Read More</button>
+    </div>
+    <div class="flex basis-1/2 items-center justify-center mt-10 md:mt-0">
+        <img src="{% static 'assets/vsu_logo_trans.png' %}" alt="" class="w-3/4 md:w-full mr-12" />
+    </div>
+</div>
+
+<!-- Achievements section -->
+{% if achievements %}
+<div class="flex flex-col lg:flex-row justify-center items-center gap-16 p-4 mt-4 text-white">
+    {% for achievement in achievements %}
+    <div class="p-4 rounded-xl bg-[#010A82]">
+        <h2 class="text-center">{{ achievement.achieve}}</h2>
+        <p class="text-justify">{{ achievement.achieveDesc}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Service? section -->
+{% if services %}
+<div class="container mx-auto flex flex-col gap-5 justify-between items-center lg:flex-row lg:items-start">
+    {% for service in services %}
+    <div class="w-full h-[80vh] flex-1 my-8 mx-8 p-8 bg-white shadow-2xl rounded-3xl lg:mx-0 flex flex-col border border-1">
+        <div class="flex items-center justify-center h-[50vh] lg:h-[40vh]">
+            <img src="{{ service.serviceImg.url }}" alt="" class="rounded-3xl object-cover h-full w-full" />
+        </div>
+        <hr class="my-4 border border-1 border-black" />
+        <ul class="mb-7 font-medium text-gray-500">
+            <div class="text-center">
+                <span class="block text-2xl font-semibold">{{ service.serviceName }}</span>
+            </div>
+            <li class="flex text-lg mb-2">
+                <span class="text-black">{{ service.serviceDesc }}</span>
+            </li>
+        </ul>
+        <a href="#/" class="flex justify-center items-center bg-indigo-600 rounded-xl py-5 px-4 text-center text-white text-xl mt-auto">
+            Choose Plan
+            <img src="https://res.cloudinary.com/williamsondesign/arrow-right.svg" class="ml-2" />
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Register section -->
+<div class="flex justify-center items-center bg-blue-100 py-24">
+    <div class="p-16 w-5/6 md:w-1/2 rounded-3xl flex flex-col items-center gap-8 bg-center text-white" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/static/assets/vietnamsteamunionlogo.jpg')">
+        <h2 class="text-center text-2xl font-bold">Trở thành một thành viên của VSU?</h2>
+        <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus, deleniti suscipit. Eveniet libero facere veritatis nihil in ratio</p>
+        <div class="w-5/6 bg-white text-black flex p-4 justify-between items-center rounded-3xl">
+            <h1>Đăng kí tham gia VSU</h1>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-3xl">Click me</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
