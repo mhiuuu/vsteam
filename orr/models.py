@@ -1,6 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
-
+from tinymce.models import HTMLField
 # Create your models here.
 
 def default_img():
@@ -16,9 +15,9 @@ categories = [
 class Article(models.Model):
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=100, choices=categories)
-    desc = models.CharField(max_length=50)
+    desc = models.CharField(max_length=200)
     image = models.ImageField(upload_to="images/", default=default_img, null=True)
-    content = RichTextField()
+    content = HTMLField()
     pubdate = models.DateField()
     update_date = models.DateField(null=True, blank=True)
     editors = models.CharField(max_length=255, null=True, blank=True) 

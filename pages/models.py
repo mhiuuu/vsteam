@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from tinymce.models import HTMLField
 # Create your models here.
 
 
@@ -14,4 +14,4 @@ class Achievements(models.Model):
     achieveDesc = models.CharField(max_length=255)
 
 class About(models.Model):
-    Intro = RichTextField()
+    Intro = HTMLField()
